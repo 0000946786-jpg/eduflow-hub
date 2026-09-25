@@ -10,33 +10,187 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AcessoNegadoRouteImport } from './routes/acesso-negado'
+import { Route as CadastroRouteImport } from './routes/cadastro'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as RecuperarSenhaRouteImport } from './routes/recuperar-senha'
+import { Route as RedefinirSenhaRouteImport } from './routes/redefinir-senha'
+import { Route as AuthenticatedAlunoRouteRouteImport } from './routes/_authenticated/aluno/route'
+import { Route as AuthenticatedGerenteRouteRouteImport } from './routes/_authenticated/gerente/route'
+import { Route as AuthenticatedInstrutorRouteRouteImport } from './routes/_authenticated/instrutor/route'
+import { Route as AuthenticatedAlunoDashboardRouteImport } from './routes/_authenticated/aluno/dashboard'
+import { Route as AuthenticatedGerenteDashboardRouteImport } from './routes/_authenticated/gerente/dashboard'
+import { Route as AuthenticatedInstrutorDashboardRouteImport } from './routes/_authenticated/instrutor/dashboard'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AcessoNegadoRoute = AcessoNegadoRouteImport.update({
+  id: '/acesso-negado',
+  path: '/acesso-negado',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CadastroRoute = CadastroRouteImport.update({
+  id: '/cadastro',
+  path: '/cadastro',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecuperarSenhaRoute = RecuperarSenhaRouteImport.update({
+  id: '/recuperar-senha',
+  path: '/recuperar-senha',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RedefinirSenhaRoute = RedefinirSenhaRouteImport.update({
+  id: '/redefinir-senha',
+  path: '/redefinir-senha',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedAlunoRouteRoute = AuthenticatedAlunoRouteRouteImport.update({
+  id: '/aluno',
+  path: '/aluno',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedGerenteRouteRoute =
+  AuthenticatedGerenteRouteRouteImport.update({
+    id: '/gerente',
+    path: '/gerente',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedInstrutorRouteRoute =
+  AuthenticatedInstrutorRouteRouteImport.update({
+    id: '/instrutor',
+    path: '/instrutor',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAlunoDashboardRoute =
+  AuthenticatedAlunoDashboardRouteImport.update({
+    id: '/dashboard',
+    path: '/dashboard',
+    getParentRoute: () => AuthenticatedAlunoRouteRoute,
+  } as any)
+const AuthenticatedGerenteDashboardRoute =
+  AuthenticatedGerenteDashboardRouteImport.update({
+    id: '/dashboard',
+    path: '/dashboard',
+    getParentRoute: () => AuthenticatedGerenteRouteRoute,
+  } as any)
+const AuthenticatedInstrutorDashboardRoute =
+  AuthenticatedInstrutorDashboardRouteImport.update({
+    id: '/dashboard',
+    path: '/dashboard',
+    getParentRoute: () => AuthenticatedInstrutorRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/acesso-negado': typeof AcessoNegadoRoute
+  '/cadastro': typeof CadastroRoute
+  '/login': typeof LoginRoute
+  '/recuperar-senha': typeof RecuperarSenhaRoute
+  '/redefinir-senha': typeof RedefinirSenhaRoute
+  '/aluno': typeof AuthenticatedAlunoRouteRouteWithChildren
+  '/gerente': typeof AuthenticatedGerenteRouteRouteWithChildren
+  '/instrutor': typeof AuthenticatedInstrutorRouteRouteWithChildren
+  '/aluno/dashboard': typeof AuthenticatedAlunoDashboardRoute
+  '/gerente/dashboard': typeof AuthenticatedGerenteDashboardRoute
+  '/instrutor/dashboard': typeof AuthenticatedInstrutorDashboardRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/acesso-negado': typeof AcessoNegadoRoute
+  '/cadastro': typeof CadastroRoute
+  '/login': typeof LoginRoute
+  '/recuperar-senha': typeof RecuperarSenhaRoute
+  '/redefinir-senha': typeof RedefinirSenhaRoute
+  '/aluno': typeof AuthenticatedAlunoRouteRouteWithChildren
+  '/gerente': typeof AuthenticatedGerenteRouteRouteWithChildren
+  '/instrutor': typeof AuthenticatedInstrutorRouteRouteWithChildren
+  '/aluno/dashboard': typeof AuthenticatedAlunoDashboardRoute
+  '/gerente/dashboard': typeof AuthenticatedGerenteDashboardRoute
+  '/instrutor/dashboard': typeof AuthenticatedInstrutorDashboardRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/acesso-negado': typeof AcessoNegadoRoute
+  '/cadastro': typeof CadastroRoute
+  '/login': typeof LoginRoute
+  '/recuperar-senha': typeof RecuperarSenhaRoute
+  '/redefinir-senha': typeof RedefinirSenhaRoute
+  '/_authenticated/aluno': typeof AuthenticatedAlunoRouteRouteWithChildren
+  '/_authenticated/gerente': typeof AuthenticatedGerenteRouteRouteWithChildren
+  '/_authenticated/instrutor': typeof AuthenticatedInstrutorRouteRouteWithChildren
+  '/_authenticated/aluno/dashboard': typeof AuthenticatedAlunoDashboardRoute
+  '/_authenticated/gerente/dashboard': typeof AuthenticatedGerenteDashboardRoute
+  '/_authenticated/instrutor/dashboard': typeof AuthenticatedInstrutorDashboardRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/acesso-negado'
+    | '/cadastro'
+    | '/login'
+    | '/recuperar-senha'
+    | '/redefinir-senha'
+    | '/aluno'
+    | '/gerente'
+    | '/instrutor'
+    | '/aluno/dashboard'
+    | '/gerente/dashboard'
+    | '/instrutor/dashboard'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/acesso-negado'
+    | '/cadastro'
+    | '/login'
+    | '/recuperar-senha'
+    | '/redefinir-senha'
+    | '/aluno'
+    | '/gerente'
+    | '/instrutor'
+    | '/aluno/dashboard'
+    | '/gerente/dashboard'
+    | '/instrutor/dashboard'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/acesso-negado'
+    | '/cadastro'
+    | '/login'
+    | '/recuperar-senha'
+    | '/redefinir-senha'
+    | '/_authenticated/aluno'
+    | '/_authenticated/gerente'
+    | '/_authenticated/instrutor'
+    | '/_authenticated/aluno/dashboard'
+    | '/_authenticated/gerente/dashboard'
+    | '/_authenticated/instrutor/dashboard'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AcessoNegadoRoute: typeof AcessoNegadoRoute
+  CadastroRoute: typeof CadastroRoute
+  LoginRoute: typeof LoginRoute
+  RecuperarSenhaRoute: typeof RecuperarSenhaRoute
+  RedefinirSenhaRoute: typeof RedefinirSenhaRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +202,159 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/acesso-negado': {
+      id: '/acesso-negado'
+      path: '/acesso-negado'
+      fullPath: '/acesso-negado'
+      preLoaderRoute: typeof AcessoNegadoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cadastro': {
+      id: '/cadastro'
+      path: '/cadastro'
+      fullPath: '/cadastro'
+      preLoaderRoute: typeof CadastroRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recuperar-senha': {
+      id: '/recuperar-senha'
+      path: '/recuperar-senha'
+      fullPath: '/recuperar-senha'
+      preLoaderRoute: typeof RecuperarSenhaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/redefinir-senha': {
+      id: '/redefinir-senha'
+      path: '/redefinir-senha'
+      fullPath: '/redefinir-senha'
+      preLoaderRoute: typeof RedefinirSenhaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/aluno': {
+      id: '/_authenticated/aluno'
+      path: '/aluno'
+      fullPath: '/aluno'
+      preLoaderRoute: typeof AuthenticatedAlunoRouteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/gerente': {
+      id: '/_authenticated/gerente'
+      path: '/gerente'
+      fullPath: '/gerente'
+      preLoaderRoute: typeof AuthenticatedGerenteRouteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/instrutor': {
+      id: '/_authenticated/instrutor'
+      path: '/instrutor'
+      fullPath: '/instrutor'
+      preLoaderRoute: typeof AuthenticatedInstrutorRouteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/aluno/dashboard': {
+      id: '/_authenticated/aluno/dashboard'
+      path: '/dashboard'
+      fullPath: '/aluno/dashboard'
+      preLoaderRoute: typeof AuthenticatedAlunoDashboardRouteImport
+      parentRoute: typeof AuthenticatedAlunoRouteRoute
+    }
+    '/_authenticated/gerente/dashboard': {
+      id: '/_authenticated/gerente/dashboard'
+      path: '/dashboard'
+      fullPath: '/gerente/dashboard'
+      preLoaderRoute: typeof AuthenticatedGerenteDashboardRouteImport
+      parentRoute: typeof AuthenticatedGerenteRouteRoute
+    }
+    '/_authenticated/instrutor/dashboard': {
+      id: '/_authenticated/instrutor/dashboard'
+      path: '/dashboard'
+      fullPath: '/instrutor/dashboard'
+      preLoaderRoute: typeof AuthenticatedInstrutorDashboardRouteImport
+      parentRoute: typeof AuthenticatedInstrutorRouteRoute
+    }
   }
 }
 
+interface AuthenticatedAlunoRouteRouteChildren {
+  AuthenticatedAlunoDashboardRoute: typeof AuthenticatedAlunoDashboardRoute
+}
+
+const AuthenticatedAlunoRouteRouteChildren: AuthenticatedAlunoRouteRouteChildren =
+  {
+    AuthenticatedAlunoDashboardRoute: AuthenticatedAlunoDashboardRoute,
+  }
+
+const AuthenticatedAlunoRouteRouteWithChildren =
+  AuthenticatedAlunoRouteRoute._addFileChildren(
+    AuthenticatedAlunoRouteRouteChildren,
+  )
+
+interface AuthenticatedGerenteRouteRouteChildren {
+  AuthenticatedGerenteDashboardRoute: typeof AuthenticatedGerenteDashboardRoute
+}
+
+const AuthenticatedGerenteRouteRouteChildren: AuthenticatedGerenteRouteRouteChildren =
+  {
+    AuthenticatedGerenteDashboardRoute: AuthenticatedGerenteDashboardRoute,
+  }
+
+const AuthenticatedGerenteRouteRouteWithChildren =
+  AuthenticatedGerenteRouteRoute._addFileChildren(
+    AuthenticatedGerenteRouteRouteChildren,
+  )
+
+interface AuthenticatedInstrutorRouteRouteChildren {
+  AuthenticatedInstrutorDashboardRoute: typeof AuthenticatedInstrutorDashboardRoute
+}
+
+const AuthenticatedInstrutorRouteRouteChildren: AuthenticatedInstrutorRouteRouteChildren =
+  {
+    AuthenticatedInstrutorDashboardRoute: AuthenticatedInstrutorDashboardRoute,
+  }
+
+const AuthenticatedInstrutorRouteRouteWithChildren =
+  AuthenticatedInstrutorRouteRoute._addFileChildren(
+    AuthenticatedInstrutorRouteRouteChildren,
+  )
+
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAlunoRouteRoute: typeof AuthenticatedAlunoRouteRouteWithChildren
+  AuthenticatedGerenteRouteRoute: typeof AuthenticatedGerenteRouteRouteWithChildren
+  AuthenticatedInstrutorRouteRoute: typeof AuthenticatedInstrutorRouteRouteWithChildren
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAlunoRouteRoute: AuthenticatedAlunoRouteRouteWithChildren,
+  AuthenticatedGerenteRouteRoute: AuthenticatedGerenteRouteRouteWithChildren,
+  AuthenticatedInstrutorRouteRoute:
+    AuthenticatedInstrutorRouteRouteWithChildren,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AcessoNegadoRoute: AcessoNegadoRoute,
+  CadastroRoute: CadastroRoute,
+  LoginRoute: LoginRoute,
+  RecuperarSenhaRoute: RecuperarSenhaRoute,
+  RedefinirSenhaRoute: RedefinirSenhaRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
